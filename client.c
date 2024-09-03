@@ -10,8 +10,7 @@ void	send_signals(int pid, char *message)
 		i = 0;
 		while (bit_index >= 0)
 		{
-      //shift what's in index 7 (MSB) to be in index 0 (LSB), then check if it's & 1. if it is 1, the condition is true, and the if condition executes
-			if ((c >> bit_index) & 1)
+			if ((c >> bit_index) & 1) //shift what's in the current bit index to be in index 0 (LSB), then check if it's & 1. if it is 1, the condition is true, and the if condition executes
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
