@@ -28,9 +28,9 @@ void	signal_handler(int signum)
 	if (!result)
 		result = ft_strdup(""); //create an empty str to add chars to
 	if (signum == SIGUSR1)
-		character = (character << 1); // shift left and add 0
-	else if (signum == SIGUSR2)
 		character = (character << 1) | 1; // shift left and add 1
+	else if (signum == SIGUSR2)
+		character = (character << 1); // shift left and add 0
 	bit_count++; 
 	if (bit_count == 8) //once you've recieved enough bits, make sense of the char
 	{
