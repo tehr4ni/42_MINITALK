@@ -4,7 +4,7 @@ void	send_signals(int pid, char *message)
 	int	i; //to iterate through the char
 	int	bit_index; //to iterate over each bit index
 
-	bit_index = 7;
+	bit_index = 7; //we start at the last bit index because we're going to shift it to the left one by one
 	while (message[i] != '\0')
 	{
 		i = 0;
