@@ -14,7 +14,7 @@ void	send_signals(int pid, char *message)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(50);
+			usleep(42);
 			bit_index--; //decrement bit_index by 1 to analyse the next bit. 7->6, 6->5, and so on
 		}
 		i++;
