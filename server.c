@@ -1,4 +1,4 @@
-static int	g_reciever;
+static int	g_reciever = 0;
 
 //function to append recieved char to message string
 char	*append_char_to_result(char **result, unsigned char character)
