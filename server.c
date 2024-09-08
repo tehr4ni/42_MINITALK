@@ -1,3 +1,5 @@
+static int	g_reciever;
+
 //function to append recieved char to message string
 char	*append_char_to_result(char **result, unsigned char character)
 {
@@ -46,6 +48,7 @@ void	signal_handler(int signum)
 
 int	main(void)
 {
+	struct sigaction	sa;
 	while (1) // create an endless loop so the server keeps checking for signals
 		pause();
 	ft_printf("The server's PID: %d\n", getpid()); // display the PID
