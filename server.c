@@ -1,5 +1,5 @@
 //function to append recieved char to message string
-char	append_char_to_result(char **result, unsigned char character)
+char	*append_char_to_result(char **result, unsigned char character)
 {
 	char	*temp;
 	int	len;
