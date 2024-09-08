@@ -1,5 +1,5 @@
 //function to append recieved char to message string
-void	append_char_to_result(char **result, unsigned char character)
+char	append_char_to_result(char **result, unsigned char character)
 {
 	char	*temp;
 	int	len;
@@ -13,6 +13,7 @@ void	append_char_to_result(char **result, unsigned char character)
 	temp[len + 1] = '\0';
 	free(*result);
 	*result = temp;
+	return (temp);
 }
 
 //recieve signals and handle the case for each signal/decrypt signal
