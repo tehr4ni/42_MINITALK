@@ -6,7 +6,10 @@ char	*append_char_to_result(char **result, unsigned char character)
 	char	*temp;
 	int	len;
 
-	len = ft_strlen(*result);
+	if (*result)
+		len = ft_strlen(*result);
+	else
+		len = 0;
 	temp = malloc(len + 2);
 	if (!temp)
 		return(NULL);
@@ -23,7 +26,7 @@ void	signal_handler(int signum)
 {
 	static unsigned char	character;
 	static int		bit_count; //for counting bits
-	static int		*result; //to hold the result message and print it as an str instead of printing chars one by one
+	static char		*result; //to hold the result message and print it as an str instead of printing chars one by one
 
 	char = 0;
 	bit_count = 0;
