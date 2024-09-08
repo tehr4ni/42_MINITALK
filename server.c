@@ -1,3 +1,20 @@
+//function to append recieved char to message string
+void	append_char_to_result(char **result, unsigned char character)
+{
+	char	*temp;
+	int	len;
+
+	len = ft_strlen(*result);
+	temp = malloc(len + 2);
+	if (!temp)
+		exit();
+	ft_strcpy(temp, *result);
+	temp[len] = character;
+	temp[len + 1] = '\0';
+	free(*result);
+	*result = temp;
+}
+
 //recieve signals and handle the case for each signal/decrypt signal
 void	signal_handler(int signum)
 {
@@ -16,7 +33,7 @@ void	signal_handler(int signum)
 	bit_count++; 
 	if (bit_count == 8) //once you've recieved enough bits, make sense of the char
 	{
-		// append char to result
+		append_char_to_result(&result, character);
 		if (character == '\0')
 		{
 			ft_printf("%s\n", result);
