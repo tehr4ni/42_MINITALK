@@ -7,7 +7,7 @@ char	*append_char_to_result(char **result, unsigned char character)
 	len = ft_strlen(*result);
 	temp = malloc(len + 2);
 	if (!temp)
-		exit();
+		return(NULL);
 	ft_strcpy(temp, *result);
 	temp[len] = character;
 	temp[len + 1] = '\0';
