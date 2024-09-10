@@ -6,7 +6,7 @@
 /*   By: btehrani <btehrani@student.42adel.org.au>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:57:57 by btehrani          #+#    #+#             */
-/*   Updated: 2024/09/09 15:42:48 by btehrani         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:38:27 by btehrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 			ft_printf("ERROR: Wrong PID");
 			return (0);
 		}
-		message = argv[2]; //acquire message
+		message = argv[2];
 		send_signals(server_pid, message);
 		send_signals(server_pid, "\n"); //signal the end of the str and mark it with a new line
 	}
