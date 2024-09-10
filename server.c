@@ -26,7 +26,7 @@ char	*append_char_to_str(char **result, unsigned char character)
 	if (!temp)
 		return (NULL);
 	if (*result)
-		ft_strlcpy(temp, *result);
+		ft_strlcpy(temp, *result, len + 2);
 	temp[len] = character;
 	temp[len + 1] = '\0';
 	free(*result);
