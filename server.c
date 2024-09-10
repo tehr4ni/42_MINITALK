@@ -12,8 +12,6 @@
 
 #include "minitalk.h"
 
-static int	g_reciever = 0;
-
 //function to append recieved char to message string
 char	*append_char_to_str(char **result, unsigned char character)
 {
