@@ -29,13 +29,13 @@ client:	client.o $(LIBFT_A) $(PRINTF_A)
 
 clean:
 	@rm -f $(OBJS)
-	@$(MAKE) -C $(LIBFTDIR) clean
-	@$(MAKE) -C $(PRINTFDIR) clean
+	make -C $(LIBFTDIR) clean
+	make -C $(PRINTFDIR) clean
 
 fclean:	clean
 	@rm -f server client
-	@$(MAKE) -C $(LIBFTDIR) fclean
-	@$(MAKE) -C $(PRINTFDIR) fclean
+	make -C $(LIBFTDIR) fclean
+	make -C $(PRINTFDIR) fclean
 
 re:	fclean all
 
