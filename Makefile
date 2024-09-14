@@ -1,25 +1,42 @@
-NAME		= minitalk
 CC		= cc
 CFLAGS		= -Wall -Werror -Wextra
-
-LIBFTNAME	= libft.a
+LIBFT_A		= ./libft/libft.a
 LIBFTDIR	= ./libft
+PRINTF_A	= ./printf/libftprintf.a
+PRINTFDIR	= ./printf
 
 SRCS		= client.c server.c
+LINK_CMD	= $(CC) $(CFLAGS) -o $@ $< $(LIBFT_A) $(PRINTF_A)
 
 OBJS		= $(SRCS:.c=.o)
 
-all: $(NAME)
+all:	server client
 
-$(NAME): $(OBJS) $(LIBFTDIR)/$(LIBFTNAME)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFTDIR)/$(LIBFTNAME)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT_A):
+	make -s -C $(LIBFTDIR)
+
+$(PRINTF_A):
+	make -s -C $(PRINTFDIR)
+
+server:	server.o $(LIBFT_A) $(PRINTF_A)
+	$(LINK_CMD)
+
+client:	client.o $(LIBFT_A) $(PRINTF_A)
+	$(LINK_CMD)
 
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) -C $(LIBFTDIR) clean
+	@$(MAKE) -C $(PRINTFDIR) clean
 
-fclean: clean
-	@rm -f $(NAME)
+fclean:	clean
+	@rm -f server client
 	@$(MAKE) -C $(LIBFTDIR) fclean
+	@$(MAKE) -C $(PRINTFDIR) fclean
 
 re:	fclean all
+
+.PHONY:	all clean fclean re
