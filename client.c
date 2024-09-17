@@ -6,7 +6,7 @@
 /*   By: btehrani <btehrani@student.42adel.org.au>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 10:57:57 by btehrani          #+#    #+#             */
-/*   Updated: 2024/09/10 15:38:27 by btehrani         ###   ########.fr       */
+/*   Updated: 2024/09/17 20:38:42 by btehrani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,31 @@ void	send_signals(int pid, char *message)
 				kill(pid, SIGUSR1);
 			else
 				kill(pid, SIGUSR2);
-			usleep(50);
+			usleep(100);
 			bit_index--;
 		}
 		i++;
 	}
 }
 
-int main(int argc, char *argv[])
+void	send_null_char(int pid)
+{
+	int	bit_index;
+
+	bit_index = 7;
+	while (bit_index >= 0)
+	{
+		if (kill(pid, SIGUSR2) == -1)
+		{
+			ft_printf("ERROR: Failed to send SIGUSR2 for NULL");
+			return ;
+		}
+		usleep(50);
+		bit_index--;
+	}
+}
+
+int	main(int argc, char *argv[])
 {
 	int	server_pid;
 	char	*message;
@@ -52,11 +69,11 @@ int main(int argc, char *argv[])
 		}
 		message = argv[2];
 		send_signals(server_pid, message);
-		send_signals(server_pid, "\n"); //signal the end of the str and mark it with a new line
+		send_null_char(server_pid); //null terminate the string
 	}
 	else
 	{
-		ft_printf("ERROR: Too many or too few arguments.\n Enter arguments");
+		ft_printf("ERROR: Too many or too few arguments.\n Enter arguments ");
 		ft_printf("as follows: ./client <PID> <message>");
 		return (1);
 	}
